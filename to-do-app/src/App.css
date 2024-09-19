@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url('../images/bg-desktop-light.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  min-height: 100vh;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 490px;
+}
+
+.todo-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  min-height: 20vh;
+}
+
+.todo-header {
+  color: #e0e0e0;
+}
+
+/* input bar style */
+
+
+.todo-input-icon {
+  position: absolute;
+  top: 138px;
+  transform: translateY(-10%);
+  transform: translateX(40%);
+}
+
+.todo-input-icon .checkbox-icon:hover {
+  cursor: default;
+  fill: none;
+  stroke: #e5e5e5;
+}
+
+.input-checkbox-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-checkbox-icon circle {
+  stroke: #e5e5e5;
+}
+
+.todo-input {
+  width: 450px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding-left: 30px;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
+.todo-input::placeholder {
+  color: #aaa;
+  font-size: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* tasks list style */
+
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  width: 490px;
+  margin-top: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.8s ease;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  cursor: pointer;
+}
+
+
+.todo-item[draggable="true"] {
+  cursor: grab;
+}
+
+.todo-item[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+
+.todo-item.completed .task-text {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.task-text {
+  flex-grow: 1;
+  margin-left: 10px;
+  text-align: left;
+  font-size: 12px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: normal;
+}
+
+
+/* deleting a task style */
+
+.delete-task {
+  background: none;
+  border: none;
+  color: #8a8a8a;
+  font-size: 12px;
+  cursor: pointer;
+  visibility: hidden;
+  position: absolute;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  right: 10px;
+}
+
+.delete-task:hover {
+  color: #161616;
+}
+
+.todo-item input[type="checkbox"] {
+  transform: scale(1.5);
+}
+
+.todo-item:hover .delete-task {
+  visibility: visible;
+}
+
+
+/* marking a task style */
+
+.checkbox-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.checkbox-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-icon circle {
+  stroke: #e5e5e5;
+}
+
+.checkbox-icon:hover circle {
+  stroke: #3153fd;
+}
+
+.checkbox-icon.checked circle {
+  fill: #3f64f6;
+}
+
+.checkbox-icon path {
+  stroke: #FFF;
+}
+
+
+/* filtering a task style */
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-button {
+  background: none;
+  border: none;
+  color: #bbbbbb;
+  font-size: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+  color: #202020;
+}
+
+.filter-button.active {
+  color: #3153fd;
+}
+
+.filter-div {
+  display: flex;
+  width: 490px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.item-count {
+  cursor: default;
+}
+
+.item-count:hover {
+  cursor: default;
+  color: #bbbbbb;
+}
+
+
+/* Dark mode toggle styles */
+
+body.dark-mode {
+  background-color: #181824;
+  background-image: url('../images/bg-desktop-dark.jpg');
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.2);
+}
+
+
+.dark-mode .todo-header {
+  color: white
+}
+
+.dark-mode .todo-input,
+.dark-mode .checkbox-icon,
+.dark-mode .todo-item,
+.dark-mode .filter-buttons {
+  background-color: #25283a;
+  color: #e0e0e0;
+}
+
+.dark-mode .todo-item {
+  border-bottom: 1px solid #454242;
+}
+
+.dark-mode .todo-list {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+.dark-mode .checkbox-icon.checked {
+  fill: #00bcd4;
+}
+
+.dark-mode .delete-task {
+  color: #e0e0e0;
+}
+
+.dark-mode .filter-button.active {
+  color: #00bcd4;
+}
+
+.dark-mode .filter-button:hover {
+  color: white;
+}
+
+.dark-mode .filter-button {
+  color: #8d8b8b;
+}
+
+.dark-mode .item-count:hover {
+  cursor: default;
+  color: #8d8b8b;
+}
+
+
+.todo-div,
+.todo-header,
+.todo-input,
+.todo-item,
+.filter-buttons,
+.delete-task {
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* Reorder drag/drop style */
+
+
+.reorder-list {
+  font-size: 12px;
+  color: #918f8f;
+  text-align: center;
+  margin-top: 35px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.dark-mode .reorder-list {
+  color: #8d8b8b;
+}
+
